@@ -1,22 +1,667 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Life OS Tracker</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    body { font-family: sans-serif; margin: 20px; background: #f9f9f9; }
-    h2, h3 { margin-top: 1.5em; }
-    .goal-card { background: white; padding: 10px 15px; margin: 10px 0; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
-    .goal-title { font-weight: bold; font-size: 1.2em; }
-    .progress { font-size: 0.95em; color: #444; margin: 5px 0; }
-    button { margin-top: 6px; padding: 6px 12px; border-radius: 5px; border: none; background: #007BFF; color: white; cursor: pointer; }
-    button:hover { background: #0056b3; }
-    input[type="file"] { margin-top: 8px; }
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.2">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
   </style>
 </head>
 <body>
-  <h1>🏁 Life OS Tracker</h1>
-  <p>This is the base version of your app. The full app code with features will be added in your GitHub repo.</p>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1">&lt;meta charset="UTF-8" /&gt;</p>
+<p class="p1">&lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;</p>
+<p class="p1">&lt;title&gt;Life OS Tracker&lt;/title&gt;</p>
+<p class="p1">&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,</p>
+<p class="p1"><span class="Apple-converted-space">      </span>Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: #f4f6f8;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 0 15px 50px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: #222;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>header {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 20px 0 10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>h1 {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 900;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>#app {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>max-width: 900px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin: 0 auto;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.goal-block {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: white;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>box-shadow: 0 0 10px #ccc;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin: 15px 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 15px 20px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>user-select: none;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.goal-header {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>justify-content: space-between;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.goal-title {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 1.25rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.progress {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: #0a66c2;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.session-list {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-top: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.session-item {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.9rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: #e1ecf9;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 6px 10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom: 6px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>justify-content: space-between;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.session-item:hover {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: #c7dafc;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.session-time {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: #0a66c2;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.notes-textarea {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>min-height: 60px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-top: 6px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border: 1px solid #ccc;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 6px 10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>resize: vertical;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>button {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: #0a66c2;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 10px 16px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-top: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>button:disabled {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: #ccc;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>cursor: not-allowed;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>#timer-controls {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-top: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>#timer-display {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: #0a66c2;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>#my-day-calendar {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>max-width: 900px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin: 20px auto 0;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>#my-day-calendar h2 {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>table.calendar {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-collapse: collapse;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>max-width: 900px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>table.calendar th,</p>
+<p class="p1"><span class="Apple-converted-space">  </span>table.calendar td {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border: 1px solid #ddd;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>table.calendar th {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: #0a66c2;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>table.calendar td:hover {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: #e1ecf9;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>table.calendar td.today {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: #c7dafc;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>table.calendar td.selected {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: #0a66c2;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>#daily-review {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>max-width: 900px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin: 10px auto 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: white;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 15px 20px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>box-shadow: 0 0 10px #ccc;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>#daily-review h3 {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-top: 0;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.habit-block {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: white;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>box-shadow: 0 0 10px #ccc;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin: 15px 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 15px 20px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>cursor: default;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>user-select: none;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.habit-header {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>justify-content: space-between;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.habit-title {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 1.2rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.habit-progress {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: #0a66c2;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.habit-streak {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: #198754;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-top: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.habit-actions button {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-right: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>textarea.notes-textarea {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: inherit;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>#export-import {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>max-width: 900px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin: 30px auto 20px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>#export-import textarea {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width: 90%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>min-height: 120px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-top: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border: 1px solid #ccc;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: monospace;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.9rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>#export-import button {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-top: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: #198754;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1">&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1">&lt;header&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;h1&gt;🏁 Life OS Tracker&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;p&gt;Track your goals, time, habits, and daily progress&lt;/p&gt;</p>
+<p class="p1">&lt;/header&gt;</p>
+<p class="p1">&lt;main id="app"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;section id="goals-section"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2&gt;Goals&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="goals-container"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;section id="timer-controls" style="display:none;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="timer-display"&gt;00:00:00&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button id="start-timer-btn"&gt;Start Session&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button id="stop-timer-btn" disabled&gt;Stop Session&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;textarea id="session-notes" class="notes-textarea" placeholder="Write notes about this session..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;section id="my-day-calendar" style="display:none;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2&gt;My Day - Monthly Calendar&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="calendar-container"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;section id="daily-review" style="display:none;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h3&gt;Daily Review for &lt;span id="selected-date"&gt;&lt;/span&gt;&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="daily-tasks"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;section id="habits-section"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2&gt;Habits&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="habits-container"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;section id="export-import"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2&gt;Backup / Restore Data&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button id="export-data-btn"&gt;Export Data (JSON)&lt;/button&gt;&lt;br/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;textarea id="backup-textarea" placeholder="Paste backup JSON here to restore"&gt;&lt;/textarea&gt;&lt;br/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button id="import-data-btn"&gt;Import Data (Restore)&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
+<p class="p1">&lt;/main&gt;</p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Utility to format seconds as HH:MM:SS</p>
+<p class="p1"><span class="Apple-converted-space">  </span>function formatTime(seconds) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const h = Math.floor(seconds / 3600).toString().padStart(2,'0');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const m = Math.floor((seconds % 3600)/60).toString().padStart(2,'0');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const s = (seconds % 60).toString().padStart(2,'0');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>return \`\${h}:\${m}:\${s}\`;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Data Model in localStorage keys</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const STORAGE_KEY = "life_os_data";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Default data structure</p>
+<p class="p1"><span class="Apple-converted-space">  </span>let data = {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>goals: [</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ id: "techWoman", title: "Tech Woman", targetHours: 1000, sessions: [] },</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ id: "myDay", title: "My Day", sessions: [] },</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ id: "habits", title: "Habits Tracker", sessions: [], habits: [</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{ id: "earlyRise", title: "Get Up Early", count: 0, streak: 0 },</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{ id: "morningRoutine", title: "Morning Routine", count: 0, streak: 0 }</p>
+<p class="p1"><span class="Apple-converted-space">      </span>] }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>],</p>
+<p class="p1"><span class="Apple-converted-space">    </span>habits: [</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ id: "earlyRise", title: "Get Up Early", count: 0, streak: 0 },</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ id: "morningRoutine", title: "Morning Routine", count: 0, streak: 0 }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>],</p>
+<p class="p1"><span class="Apple-converted-space">    </span>dailyReviews: {}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Load data from localStorage if exists</p>
+<p class="p1"><span class="Apple-converted-space">  </span>function loadData() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const saved = localStorage.getItem(STORAGE_KEY);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (saved) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>data = JSON.parse(saved);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} catch(e) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>console.error("Failed to parse saved data", e);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Save data to localStorage</p>
+<p class="p1"><span class="Apple-converted-space">  </span>function saveData() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>localStorage.setItem(STORAGE_KEY, JSON.stringify(data));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Render Goals on page</p>
+<p class="p1"><span class="Apple-converted-space">  </span>function renderGoals() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const container = document.getElementById("goals-container");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>container.innerHTML = "";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>data.goals.forEach(goal =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>// Only render the "techWoman" goal here for session tracking</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if(goal.id === "techWoman") {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const goalDiv = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>goalDiv.className = "goal-block";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>goalDiv.dataset.goalId = goal.id;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const totalSeconds = goal.sessions.reduce((sum, s) =&gt; sum + s.duration, 0);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const hoursDone = (totalSeconds / 3600).toFixed(1);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>goalDiv.innerHTML = \`</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="goal-header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="goal-title"&gt;\${goal.title}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="progress"&gt;\${hoursDone}h / \${goal.targetHours}h&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="session-list"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>\`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>container.appendChild(goalDiv);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Add click event to toggle session list and timer controls</p>
+<p class="p1"><span class="Apple-converted-space">        </span>goalDiv.onclick = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>if(timerControls.style.display === "none" || currentGoal !== goal.id) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>openGoal(goal.id);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>closeGoal();</p>
+<p class="p1"><span class="Apple-converted-space">          </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Render sessions under this goal</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const sessionList = goalDiv.querySelector(".session-list");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>sessionList.innerHTML = "";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>goal.sessions.forEach((session, idx) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const sessionDiv = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">          </span>sessionDiv.className = "session-item";</p>
+<p class="p1"><span class="Apple-converted-space">          </span>sessionDiv.innerHTML = \`</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div&gt;&lt;strong&gt;Session \${idx + 1}&lt;/strong&gt;: &lt;span class="session-time"&gt;\${formatTime(session.duration)}&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>\`;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>sessionList.appendChild(sessionDiv);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>// Clicking session opens notes editor</p>
+<p class="p1"><span class="Apple-converted-space">          </span>sessionDiv.onclick = (ev) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>ev.stopPropagation();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>openSessionNotes(goal.id, idx);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>};</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>let currentGoal = null;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const timerControls = document.getElementById("timer-controls");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const timerDisplay = document.getElementById("timer-display");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const startBtn = document.getElementById("start-timer-btn");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const stopBtn = document.getElementById("stop-timer-btn");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const notesArea = document.getElementById("session-notes");</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>let timerInterval = null;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>let sessionStart = null;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>let sessionDuration = 0;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function openGoal(goalId) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>currentGoal = goalId;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>timerControls.style.display = "block";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>renderGoals(); // refresh session list highlight</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>function closeGoal() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>currentGoal = null;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>timerControls.style.display = "none";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>clearInterval(timerInterval);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>timerInterval = null;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>sessionStart = null;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>sessionDuration = 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>timerDisplay.textContent = "00:00:00";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>notesArea.value = "";</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Timer functions</p>
+<p class="p1"><span class="Apple-converted-space">  </span>startBtn.onclick = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (!currentGoal) return;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>sessionStart = new Date();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>sessionDuration = 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>timerDisplay.textContent = "00:00:00";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>startBtn.disabled = true;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>stopBtn.disabled = false;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>notesArea.value = "";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>timerInterval = setInterval(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>sessionDuration = Math.floor((new Date() - sessionStart) / 1000);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>timerDisplay.textContent = formatTime(sessionDuration);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}, 1000);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>stopBtn.onclick = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (!currentGoal || sessionStart === null) return;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>clearInterval(timerInterval);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>timerInterval = null;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const notes = notesArea.value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const goal = data.goals.find(g =&gt; g.id === currentGoal);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (goal) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>goal.sessions.push({</p>
+<p class="p1"><span class="Apple-converted-space">        </span>startTime: sessionStart.toISOString(),</p>
+<p class="p1"><span class="Apple-converted-space">        </span>duration: sessionDuration,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>notes: notes</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p1"><span class="Apple-converted-space">      </span>saveData();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderGoals();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>closeGoal();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Session notes editor (simple prompt)</p>
+<p class="p1"><span class="Apple-converted-space">  </span>function openSessionNotes(goalId, sessionIdx) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const goal = data.goals.find(g =&gt; g.id === goalId);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (!goal) return;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const session = goal.sessions[sessionIdx];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (!session) return;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const newNotes = prompt("Edit session notes:", session.notes || "");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (newNotes !== null) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>session.notes = newNotes;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>saveData();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderGoals();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// HABITS SECTION</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const habitsContainer = document.getElementById("habits-container");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>function renderHabits() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>habitsContainer.innerHTML = "";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>data.habits.forEach(habit =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const habitDiv = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>habitDiv.className = "habit-block";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>habitDiv.innerHTML = \`</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="habit-header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span class="habit-title"&gt;\${habit.title}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span class="habit-progress"&gt;\${habit.count} / 10000&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="habit-streak"&gt;Streak: \${habit.streak} days&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="habit-actions"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button data-habit-id="\${habit.id}" class="habit-increment"&gt;+1&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button data-habit-id="\${habit.id}" class="habit-reset"&gt;Reset&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>\`;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>habitsContainer.appendChild(habitDiv);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Bind habit buttons</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.querySelectorAll(".habit-increment").forEach(btn =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>btn.onclick = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const id = btn.dataset.habitId;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const habit = data.habits.find(h =&gt; h.id === id);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (habit) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>habit.count++;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>habit.streak++;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>saveData();</p>
+<p class="p1"><span class="Apple-converted-space">          </span>renderHabits();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>};</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.querySelectorAll(".habit-reset").forEach(btn =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>btn.onclick = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const id = btn.dataset.habitId;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const habit = data.habits.find(h =&gt; h.id === id);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (habit) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>habit.count = 0;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>habit.streak = 0;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>saveData();</p>
+<p class="p1"><span class="Apple-converted-space">          </span>renderHabits();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>};</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// MY DAY calendar and daily review</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const calendarContainer = document.getElementById("calendar-container");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const dailyReviewSection = document.getElementById("daily-review");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const selectedDateSpan = document.getElementById("selected-date");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const dailyTasksDiv = document.getElementById("daily-tasks");</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function getToday() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>return new Date();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>let selectedDate = getToday();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function formatDate(date) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>return \`\${date.getFullYear()}-\${(date.getMonth()+1).toString().padStart(2,'0')}-\${date.getDate().toString().padStart(2,'0')}\`;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function renderCalendar(year, month) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>calendarContainer.innerHTML = "";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const table = document.createElement("table");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>table.className = "calendar";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const thead = document.createElement("thead");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const trHead = document.createElement("tr");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>daysOfWeek.forEach(d =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const th = document.createElement("th");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>th.textContent = d;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>trHead.appendChild(th);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>thead.appendChild(trHead);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>table.appendChild(thead);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const firstDay = new Date(year, month, 1);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const startDay = firstDay.getDay();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const daysInMonth = new Date(year, month + 1, 0).getDate();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const tbody = document.createElement("tbody");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let row = document.createElement("tr");</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Empty cells before first day</p>
+<p class="p1"><span class="Apple-converted-space">    </span>for (let i = 0; i &lt; startDay; i++) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const td = document.createElement("td");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>row.appendChild(td);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>for (let day = 1; day &lt;= daysInMonth; day++) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if ((startDay + day - 1) % 7 === 0 &amp;&amp; day !== 1) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>table.appendChild(row);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>row = document.createElement("tr");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const td = document.createElement("td");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>td.textContent = day;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const dateKey = \`\${year}-\${(month + 1).toString().padStart(2,'0')}-\${day.toString().padStart(2,'0')}\`;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (dateKey === formatDate(selectedDate)) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>td.classList.add("selected");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (dateKey === formatDate(getToday())) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>td.classList.add("today");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>td.onclick = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>selectedDate = new Date(year, month, day);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderCalendar(year, month);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>showDailyReview(selectedDate);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>};</p>
+<p class="p1"><span class="Apple-converted-space">      </span>row.appendChild(td);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Empty cells after last day</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const remainingCells = 7 - ((startDay + daysInMonth) % 7);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (remainingCells &lt; 7) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>for (let i = 0; i &lt; remainingCells; i++) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const td = document.createElement("td");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>row.appendChild(td);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>table.appendChild(row);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>calendarContainer.appendChild(table);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function showDailyReview(date) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>dailyReviewSection.style.display = "block";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>selectedDateSpan.textContent = formatDate(date);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>dailyTasksDiv.innerHTML = "";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const key = formatDate(date);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// List sessions from "Tech Woman" goal on this date</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const techGoal = data.goals.find(g =&gt; g.id === "techWoman");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const sessionsToday = techGoal.sessions.filter(session =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return session.startTime.startsWith(key);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (sessionsToday.length &gt; 0) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const h4 = document.createElement("h4");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>h4.textContent = "Tech Woman Sessions:";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>dailyTasksDiv.appendChild(h4);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>sessionsToday.forEach((session, i) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const div = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>div.textContent = \`Session \${i+1}: Duration \${formatTime(session.duration)}; Notes: \${session.notes || "None"}\`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>dailyTasksDiv.appendChild(div);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>dailyTasksDiv.innerHTML = "&lt;p&gt;No sessions recorded for this day.&lt;/p&gt;";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// List habits marked for this day if any</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (data.dailyReviews[key] &amp;&amp; data.dailyReviews[key].habitsDone) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const habitsDone = data.dailyReviews[key].habitsDone;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const h4h = document.createElement("h4");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>h4h.textContent = "Habits done today:";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>dailyTasksDiv.appendChild(h4h);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>habitsDone.forEach(hid =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const habit = data.habits.find(h =&gt; h.id === hid);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (habit) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const div = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">          </span>div.textContent = habit.title;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>dailyTasksDiv.appendChild(div);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Button to mark habits done today</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const habitMarkDiv = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>habitMarkDiv.style.marginTop = "10px";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>habitMarkDiv.innerHTML = "&lt;h4&gt;Mark Habits Done Today:&lt;/h4&gt;";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>data.habits.forEach(habit =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const btn = document.createElement("button");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>btn.textContent = habit.title;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>btn.style.marginRight = "6px";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>btn.onclick = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>markHabitDoneToday(habit.id, key);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>showDailyReview(date);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderHabits();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>};</p>
+<p class="p1"><span class="Apple-converted-space">      </span>habitMarkDiv.appendChild(btn);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>dailyTasksDiv.appendChild(habitMarkDiv);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function markHabitDoneToday(habitId, dateKey) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (!data.dailyReviews[dateKey]) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>data.dailyReviews[dateKey] = { habitsDone: [] };</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (!data.dailyReviews[dateKey].habitsDone.includes(habitId)) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>data.dailyReviews[dateKey].habitsDone.push(habitId);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>// Increment habit count &amp; streak</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const habit = data.habits.find(h =&gt; h.id === habitId);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (habit) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>habit.count++;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>habit.streak++;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>saveData();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// EXPORT / IMPORT data backup and restore</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const exportBtn = document.getElementById("export-data-btn");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const importBtn = document.getElementById("import-data-btn");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const backupTextarea = document.getElementById("backup-textarea");</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>exportBtn.onclick = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>backupTextarea.value = JSON.stringify(data, null, 2);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>alert("Data exported below. You can copy and save it externally.");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>importBtn.onclick = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const imported = JSON.parse(backupTextarea.value);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (imported &amp;&amp; typeof imported === "object") {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>data = imported;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>saveData();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderGoals();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderHabits();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderCalendar(selectedDate.getFullYear(), selectedDate.getMonth());</p>
+<p class="p1"><span class="Apple-converted-space">        </span>showDailyReview(selectedDate);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>alert("Data imported successfully!");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>alert("Invalid JSON data.");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>} catch(e) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>alert("Error parsing JSON: " + e.message);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// INITIALIZATION</p>
+<p class="p1"><span class="Apple-converted-space">  </span>loadData();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>renderGoals();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>renderHabits();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Show calendar and daily review section</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById("my-day-calendar").style.display = "block";</p>
+<p class="p1"><span class="Apple-converted-space">  </span>renderCalendar(selectedDate.getFullYear(), selectedDate.getMonth());</p>
+<p class="p1"><span class="Apple-converted-space">  </span>showDailyReview(selectedDate);</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+<p class="p2"><br></p>
 </body>
 </html>
